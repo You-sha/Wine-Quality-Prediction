@@ -89,9 +89,16 @@ import matplotlib.pyplot as plt
 plot_confusion_matrix(knn_fin, X_test, Y_test, cmap=plt.cm.Blues)
 plt.xlabel('Predicted Quality')
 plt.ylabel('Actual quality')
-plt.title('Predicting Wine Quality')
+plt.suptitle('Predicting Wine Quality',fontsize=13)
+plt.title('KNN',fontsize=10)
 plt.savefig('cm',dpi=600)
 
+plot_confusion_matrix(model2, X_test, Y_test, cmap=plt.cm.Blues)
+plt.xlabel('Predicted Quality')
+plt.ylabel('Actual quality')
+plt.suptitle('Predicting Wine Quality',fontsize=13)
+plt.title('Logistic Regression',)
+plt.savefig('logistic_cm',dpi=600)
 
 mean_squared_error(Y_test,y_pred3).round(2)
 mean_absolute_error(Y_test,y_pred).round(2)

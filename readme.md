@@ -1,6 +1,6 @@
 # Predicting Wine Quality
 Using basic ML models to predict quality of wines, based on the given features in the dataset.
-
+___
 ***Features:***
 
 **fixed_acidity** - Fixed acidity of the wine.
@@ -47,11 +47,13 @@ Looking at the correlation between the target variable and the given features.
 We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Residual sugars seem to have the least impact on quality.
 
 ## Models
-I split the data into features and target, and then into a training and a test set. Then I fit it into the models.
+I split the data into features and a target (the 'quality' column), and then into a training and a test set using the train test split from sklearn. Then I start fitting the training sets into the models.
 ### Logistic Regression
+Logistic Regression model in sklearn, (solver='liblinear')
+
 <img src="https://user-images.githubusercontent.com/123200960/219413997-99d93bc2-31f2-4540-a809-03f87ce404f8.png" width="600" height="400">
 
-
+The model only performs 1% better than just guesswork. This indicates that the data is difficult to be accurately seperated by drawing a line, and so Logistic Regression is not a good model to use.
 
 
 ### K-Neighbors Classifier

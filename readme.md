@@ -1,7 +1,7 @@
 # Predicting Wine Quality
 Using basic ML models to predict quality of wines, based on the given features in the dataset.
 
-### Features: 
+***Features:***
 
 **fixed_acidity** - Fixed acidity of the wine.
 
@@ -34,6 +34,8 @@ Looking at the correlation between the target variable and the given features.
 
 We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Residual sugars seem to have the least impact on quality.
 
+## Models
+(content in progress)
 ## Evaluation of KNN = 2
 **(Values rounded to the 2nd decimal)**
 

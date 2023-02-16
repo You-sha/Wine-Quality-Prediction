@@ -1,6 +1,8 @@
-# Predicting Wine Quality
-Using basic ML models to predict quality of wines, based on the given features in the dataset.
+# <p align="center">Predicting Wine Quality</p>
+<p align = "center">Using basic ML models to predict quality of wines, based on the given features in the dataset.</p>
+
 ___
+
 ***Features:***
 
 **fixed_acidity** - Fixed acidity of the wine.
@@ -27,9 +29,10 @@ ___
 
 **quality** - Quality of the wine. This is our target variable.
 
-## Cleaning data
+## <p align="center">Cleaning data</p>
 
 Opening the dataframe using the Variable Explorer in Spyder:
+
 <img src="https://user-images.githubusercontent.com/123200960/219403282-85543b7a-e141-41b8-ae06-c784c575492a.png" width="600" height="500">
 
 
@@ -39,14 +42,14 @@ All of the features are dumped into a single column, seperated by semicolons. Fi
 
 Much better (and now actually usable).
 
-## Exploration of data
+## <p align="center">Exploration of data</p>
 Looking at the correlation between the target variable and the given features.
 
-<img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600">
+<p align="center"><img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600"></p>
 
 We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Residual sugars seem to have the least impact on quality.
 
-## Models
+## <p align="center">Models</p>
 I split the data into features and a target (the 'quality' column), and then into a training and a test set using the train test split from sklearn. Then I start fitting the training sets into the models.
 ### Logistic Regression
 Logistic Regression model in sklearn, (solver='liblinear')

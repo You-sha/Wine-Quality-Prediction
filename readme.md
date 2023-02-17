@@ -43,9 +43,13 @@ All of the features are dumped into a single column, seperated by semicolons. Fi
 Much better (and now actually usable).
 
 ## <p align="center">Exploration of data</p>
+First let's look at the correlation between the features.
+
+<img src="https://user-images.githubusercontent.com/123200960/219697613-0b9fec4a-78a7-4898-9a93-ba27227c06bc.png" width="550" height="500">
+
 Looking at the correlation between the target variable and the given features.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600"></p>
+<img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600">
 
 We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Residual sugars seem to have the least impact on quality.
 

@@ -51,7 +51,7 @@ Looking at the correlation between the target variable and the given features.
 
 <img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600">
 
-We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Residual sugars seem to have the least impact on quality.
+We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
 
 ## <p align="center">Models</p>
 I split the data into features and a target (the 'quality' column), and then into a training and a test set using the train test split from sklearn. Then I start fitting the training sets into the models.

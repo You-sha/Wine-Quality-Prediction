@@ -5,29 +5,29 @@ ___
 
 ***Features:***
 
-**fixed_acidity** - Fixed acidity of the wine.
+**```fixed_acidity```** - Fixed acidity of the wine.
 
-**volatil_acidity** - Volatile acidity of the wine (I think it is misspelled).
+**```volatil_acidity```** - Volatile acidity of the wine (I think it is misspelled).
 
-**citric_acid** - Amount of cirtic acid in the wine.
+**```citric_acid```** - Amount of cirtic acid in the wine.
 
-**residual_sugar** - Amount of residual sugar in the wine.
+**```residual_sugar```** - Amount of residual sugar in the wine.
 
-**chlorides** - Amount of Chlorides in the wine.
+**```chlorides```** - Amount of Chlorides in the wine.
 
-**free_sulfur_dioxide** - The amount of Sulfur Dioxide in the wine that is free.
+**```free_sulfur_dioxide```** - The amount of Sulfur Dioxide in the wine that is free.
 
-**total_sulfur_dioxide** - Amount of Sulfur Dioxide present in the wine.
+**```total_sulfur_dioxide```** - Amount of Sulfur Dioxide present in the wine.
 
-**density** - Density of the wine
+**```density```** - Density of the wine
 
-**pH** - pH level of the wine.
+**```pH```** - pH level of the wine.
 
-**sulphates** - Amount of sulphates in the wine.
+**```sulphates```** - Amount of sulphates in the wine.
 
-**alcohol** - Alcohol content in the wine.
+**```alcohol```** - Alcohol content in the wine.
 
-**quality** - Quality of the wine. This is our target variable.
+**```quality```** - Quality of the wine. This is our target variable.
 
 ## <p align="center">Cleaning data</p>
 

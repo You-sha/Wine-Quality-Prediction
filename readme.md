@@ -1,6 +1,8 @@
 # <p align="center">Predicting Wine Quality</p>
 <p align = "center">Using basic ML models to predict quality of wines, based on the given features in the dataset.</p>
 
+<p align = "center">(In progress)</p>
+
 ___
 
 ***Features:***
@@ -27,9 +29,13 @@ ___
 
 **```alcohol```** - Alcohol content in the wine.
 
+#
+
 **```quality```** - Quality of the wine. This is our target variable.
 
-## <p align="center">Cleaning data</p>
+#
+
+## <p align="center">Exploration</p>
 
 Opening the dataframe using the Variable Explorer in Spyder:
 
@@ -42,38 +48,56 @@ All of the features are dumped into a single column, seperated by semicolons. Fi
 
 Much better (and now actually usable).
 
-## <p align="center">Exploration of data</p>
+---
+
 First let's look at the correlation between the features.
 
-<img src="https://user-images.githubusercontent.com/123200960/219697613-0b9fec4a-78a7-4898-9a93-ba27227c06bc.png" width="550" height="500">
+<img src="https://user-images.githubusercontent.com/123200960/219882675-0b1d2a57-c6ad-42f9-a748-ee97a4b05727.png" width="550" height="500">
 
-Looking at the correlation between the target variable and the given features.
+Looking at the correlation between just the target variable and features:
 
-<img src="https://user-images.githubusercontent.com/123200960/219378258-ca0418ce-094b-4be3-b933-bcd18289bc2d.png" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/123200960/219882758-0c0256dc-0e4f-4b59-a6d7-4a0fa9e997d6.png" width="260" height="600">
 
-We can see that alcohol content and density have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
+We can see that **alcohol** content and **density** have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
 
-Let's look at the top four features that impact quality (Alcohol, Density, Residual Sugar, and Total Sulfur Dioxide):
+Let's look at the top four features that impact quality (```alcohol```, ```density```, ```residual_sugar```, and ```total_sulfur_dioxide```):
 
-## <p align="center">Models</p>
-I split the data into features and a target (the 'quality' column), and then into a training and a test set using the train test split from sklearn. Then I start fitting the training sets into the models.
-### Logistic Regression
-Logistic Regression model in sklearn, (solver='liblinear')
+<img src="https://user-images.githubusercontent.com/123200960/219882985-1b0840ab-54a0-4ccc-ac1e-d85b8aff7a7a.png" width="1000" height="500">
 
-<img src="https://user-images.githubusercontent.com/123200960/219413997-99d93bc2-31f2-4540-a809-03f87ce404f8.png" width="600" height="400">
+Alcohol and density are difficult to read as their changes are so small. Let's close up by setting a smaller y limit.
 
-The model only performs 1% better than just guesswork. This indicates that the data is difficult to be accurately seperated by drawing a line, and so Logistic Regression is not a good model to use.
+<img src="https://user-images.githubusercontent.com/123200960/219883963-9c6cba1a-d0a0-499e-98ac-7d13b952da94.png" width="1000" height="300">
 
+```alcohol``` - Wines with quality between 6 to 8 have the most alcohol. Interestingly, 9s have almost the same alcohol as 3s.
 
-### K-Neighbors Classifier
-<img src="https://user-images.githubusercontent.com/123200960/218274550-a6f6bf4f-5d0c-4f7e-b03f-1922678b2a5f.png" width="600" height="400">
+```density``` - Normally distributed. Wines with quality 6 seem to be the most dense. Highest quality wines have the lowest density.
 
-**(Values rounded to the 2nd decimal)**
+```residual_sugar``` - Similar as density.
 
-MSE = 0.31
+```total_sulfur_dioxide``` - Presence seems to be highest in low quality wines, while lowest in high quality ones.
 
-MAE = 0.58
+___
 
-Variance in y = 0.78
+Let's take a look at their distributions:
 
-Accuracy = 0.82 
+<img src="https://user-images.githubusercontent.com/123200960/219884326-a1bcf08f-c34f-4592-a415-8464a3a81e85.png" width="1000" height="500">
+
+```alcohol``` - Fairly normal distribution. Skewed to the right.
+
+```density```, ```residual_sugar``` - Non normal distribution. There seem to be a lot of outliers. These will probably have to be scaled.
+
+```total_sulfur_dioxide``` - Somewhat normal. Few outliers. Might not need scaling.
+
+___
+
+Since ```alcohol``` is the most correlated feature, it might make sense to have a look at its relation with the other features.
+
+<img src="https://user-images.githubusercontent.com/123200960/219884796-052d80db-a6fd-419e-8cf5-42836474756a.png" width="260" height="600">
+
+Let's also have a look at the relations between it's top 4 highest correlated variables, ```density```, ```residual_sugar```, ```total_sulfur_dioxide``` and ```chlorides``` (I shall not include ```quality``` as it is not continuous).
+
+<img src="https://user-images.githubusercontent.com/123200960/219885039-6c2799c8-69ec-435f-9552-c805348f7103.png" width="1000" height="500">
+
+Wow. This makes me want to try building a model to predict the alcohol amount of a wine as well. I wonder though if the high correlation between density and alcohol could have a negative impact on the quality prediction.
+
+*(In progress)*

@@ -62,7 +62,7 @@ We can see that **alcohol** content and **density** have the biggest impact on t
 
 Let's look at the top four features that impact quality (```alcohol```, ```density```, ```residual_sugar```, and ```total_sulfur_dioxide```):
 
-<img src="https://user-images.githubusercontent.com/123200960/219882985-1b0840ab-54a0-4ccc-ac1e-d85b8aff7a7a.png" width="1000" height="500">
+<img src="https://user-images.githubusercontent.com/123200960/219882985-1b0840ab-54a0-4ccc-ac1e-d85b8aff7a7a.png" width="1000" height="480">
 
 Alcohol and density are difficult to read as their changes are so small. Let's close up by setting a smaller y limit.
 

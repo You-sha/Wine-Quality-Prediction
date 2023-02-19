@@ -60,33 +60,35 @@ Looking at the correlation between just the target variable and features:
 
 We can see that **alcohol** content and **density** have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
 
-Let's look at the top four features that impact quality (```alcohol```, ```density```, ```residual_sugar```, and ```total_sulfur_dioxide```):
+Let's look at the top four features that impact quality (```alcohol```, ```density```, ```chlorides```, and ```volatil_acidity```):
 
-<img src="https://user-images.githubusercontent.com/123200960/219882985-1b0840ab-54a0-4ccc-ac1e-d85b8aff7a7a.png" width="1000" height="480">
+<img src="https://user-images.githubusercontent.com/123200960/219965143-63abde58-8d42-49af-8054-2d5e95ef7812.png" width="1000" height="480">
 
-Alcohol and density are difficult to read as their changes are so small. Let's close up by setting a smaller y limit.
-
-<img src="https://user-images.githubusercontent.com/123200960/219883963-9c6cba1a-d0a0-499e-98ac-7d13b952da94.png" width="1000" height="280">
+Since alcohol and density were difficult to read as their changes are so small, I closed up on them by setting a smaller y limit.
 
 ```alcohol``` - Wines with quality between 6 to 8 have the most alcohol. Interestingly, 9s have almost the same alcohol as 3s.
 
 ```density``` - Normally distributed. Wines with quality 6 seem to be the most dense. Highest quality wines have the lowest density.
 
-```residual_sugar``` - Similar as density.
+```chlorides``` - Since this is negatively correlated, we can see that the best wines have the lowest chlorides.
 
-```total_sulfur_dioxide``` - Presence seems to be highest in low quality wines, while lowest in high quality ones.
+```volatil_acidity``` - Similar to chlorides.
 
 ___
 
 Let's take a look at their distributions:
 
-<img src="https://user-images.githubusercontent.com/123200960/219884326-a1bcf08f-c34f-4592-a415-8464a3a81e85.png" width="1000" height="500">
+<img src="https://user-images.githubusercontent.com/123200960/219965353-2a5fe6a5-017d-4aea-8254-d3c7abccb9ac.png" width="1000" height="500">
 
 ```alcohol``` - Fairly normal distribution. Skewed to the right.
 
-```density```, ```residual_sugar``` - Non normal distribution. There seem to be a lot of outliers. These will probably have to be scaled.
+```density```, ```chlorides```,```volatil_acidity``` - Non normal distribution. There seem to be a lot of outliers. These will probably have to be scaled depending on the model.
 
-```total_sulfur_dioxide``` - Somewhat normal. Few outliers. Might not need scaling.
+Let's also have a look at their box plots:
+
+![Correlations with quality (boxplot)](https://user-images.githubusercontent.com/123200960/219965482-048eaf73-5ca1-442c-9900-ed552002636d.png)
+
+We can see that there are a lot of outliers. These might affect model performance negatively.
 
 ___
 

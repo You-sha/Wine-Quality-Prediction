@@ -66,7 +66,7 @@ Let's look at the top four features that impact quality (```alcohol```, ```densi
 
 Alcohol and density are difficult to read as their changes are so small. Let's close up by setting a smaller y limit.
 
-<img src="https://user-images.githubusercontent.com/123200960/219883963-9c6cba1a-d0a0-499e-98ac-7d13b952da94.png" width="1000" height="300">
+<img src="https://user-images.githubusercontent.com/123200960/219883963-9c6cba1a-d0a0-499e-98ac-7d13b952da94.png" width="1000" height="280">
 
 ```alcohol``` - Wines with quality between 6 to 8 have the most alcohol. Interestingly, 9s have almost the same alcohol as 3s.
 
@@ -99,5 +99,9 @@ Let's also have a look at the relations between it's top 4 highest correlated va
 <img src="https://user-images.githubusercontent.com/123200960/219885039-6c2799c8-69ec-435f-9552-c805348f7103.png" width="1000" height="500">
 
 Wow. This makes me want to try building a model to predict the alcohol amount of a wine as well. I wonder though if the high correlation between density and alcohol could have a negative impact on the quality prediction.
+
+Since all of these features are negatively correlated; we can see that in general the lower the presence of these features, the better the quality tends to be.
+
+
 
 *(In progress)*

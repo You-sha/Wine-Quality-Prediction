@@ -84,11 +84,11 @@ Let's take a look at their distributions:
 
 ```density```, ```chlorides```,```volatil_acidity``` - Non normal distribution. There seem to be a lot of outliers. These will probably have to be scaled depending on the model.
 
-Let's also have a look at their box plots:
+Let's take a look at their box plots as well:
 
-![Correlations with quality (boxplot)](https://user-images.githubusercontent.com/123200960/219965482-048eaf73-5ca1-442c-9900-ed552002636d.png)
+![Correlations with quality (boxplot)](https://user-images.githubusercontent.com/123200960/220131692-ba355c8b-0158-457c-aeee-d2af1edaa14a.png)
 
-We can see that there are a lot of outliers. These might affect model performance negatively.
+We can see that there are a lot of outliers. These could affect model performance negatively.
 
 ___
 
@@ -104,6 +104,40 @@ Wow. This makes me want to try building a model to predict the alcohol amount of
 
 Since all of these features are negatively correlated; we can see that in general the lower the presence of these features, the better the quality tends to be.
 
+## <p align="center">Cleaning</p>
 
+I'm going to make models with four different variations of this dataset:
+
+* ***All of the features in the raw data*** - I expect the models built on this to perform the worst. But it should give an obvious baseline performance to beat.
+
+* ***Highly correlated features in the raw data*** - I expect models on this to perform better than the previous one.
+
+* ***All of the features without outliers*** - I would expect this one to perform somewhat similar to the previous one. But I might be surprised.
+
+* ***Highly correlated features without outliers*** - I expect models built on this one to perform the best.
+
+Since I am not exactly the most knowledgable about wine, it is difficult to say at what point outliers can be safely discarded. So I will be trying my best to only remove extreme cases. Still, it should be kept in mind that this model is not going to be the best to use in real-world scenarios.
+
+### Removing Outliers
+
+For most of the highly correlated features, I have discarded values over the 99.5 percentile, and under the 0.05 percentile.
+
+The four highest correlated features in the new dataset:
+
+**Bars:**
+
+![Bar Outliers](https://user-images.githubusercontent.com/123200960/220135569-9979cc3a-63e4-4f53-a12b-e4db5543c970.png)
+
+**Distributions:**
+
+Boxplots:
+
+![Distribution of features (Removed Outliers)](https://user-images.githubusercontent.com/123200960/220135967-b0ff4403-a165-4c91-9f66-07a976d8b5de.png)
+
+Histograms:
+
+![Distributions (outliers)](https://user-images.githubusercontent.com/123200960/220135891-0710d992-0635-4055-8296-2fd4481c29f2.png)
+
+Due to the lower amoint of outliers, the features have become more predictable.
 
 *(In progress)*

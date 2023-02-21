@@ -138,6 +138,4 @@ Histograms:
 
 ![Distributions (outliers)](https://user-images.githubusercontent.com/123200960/220135891-0710d992-0635-4055-8296-2fd4481c29f2.png)
 
-Due to the lower amoint of outliers, the features have become more predictable.
-
 *(In progress)*

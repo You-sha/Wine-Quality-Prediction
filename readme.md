@@ -3,11 +3,11 @@
 
 ## Table of contents:
 
-* [Exploration](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#exploration)
-* [Cleaning](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#cleaning)
-* [Model Building](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#model-building)
-* [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#model-tuning)
-* [Conclusion](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#conclusion)
+* [Exploration](https://github.com/You-sha/Wine-Quality-Prediction#exploration)
+* [Cleaning](https://github.com/You-sha/Wine-Quality-Prediction#cleaning)
+* [Model Building](https://github.com/You-sha/Wine-Quality-Prediction#model-building)
+* [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction#model-tuning)
+* [Conclusion](https://github.com/You-sha/Wine-Quality-Prediction#conclusion)
 
 
 ___

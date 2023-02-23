@@ -6,7 +6,7 @@
 * [Exploration](https://github.com/You-sha/Wine-Quality-Prediction#exploration)
 * [Cleaning](https://github.com/You-sha/Wine-Quality-Prediction#cleaning)
 * [Model Building](https://github.com/You-sha/Wine-Quality-Prediction#model-building)
-* [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction#model-tuning)
+  - [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction#model-tuning)
 * [Conclusion](https://github.com/You-sha/Wine-Quality-Prediction#conclusion)
 
 
@@ -190,6 +190,10 @@ Confusion Matrix:
 ![Random Forest CM](https://user-images.githubusercontent.com/123200960/220903858-cf4573fe-f523-49ef-9bfc-1958c6648fe1.png)
 
 ## <p align="center">Conclusion</p>
+
+**We have a Random Forest Regressor model with 71.33% accuracy in predicting the quality of a wine.**
+
+---
 
 While I would like to try and find more ways to improve the performance of this model, I have spent entirely too much time and effort on this project. And have now realized that I am extremely dispassionate about wines. I wanted to stop midway, but I couldn't bring myself to just abandon something I started.
 

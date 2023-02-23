@@ -14,7 +14,7 @@ from warnings import simplefilter
 simplefilter(action='ignore', category=FutureWarning)
 
 df = pd.read_csv('Cleaned data.csv')
-df_outliers = pd.read_csv('Data Outliers3.csv')
+df_outliers = pd.read_csv('Data Outliers.csv')
 
 df.columns
 df_outliers.columns
@@ -46,72 +46,98 @@ rf2.score(X2,y2) #99.97%
 
 from sklearn.model_selection import train_test_split
 
-X1_train,X1_test,y1_train,y1_test = train_test_split(X1,y1,random_state=1,test_size=.2)
-X2_train,X2_test,y2_train,y2_test = train_test_split(X2,y2,random_state=1,test_size=.2)
-X3_train,X3_test,y1_train,y1_test = train_test_split(X3,y1,random_state=1,test_size=.2)
+X1_train,X1_test,y1_train,y1_test = train_test_split(X1,y1,stratify = y1,random_state=1,test_size=.2)
+X2_train,X2_test,y2_train,y2_test = train_test_split(X2,y2,stratify = y2,random_state=1,test_size=.2)
+X3_train,X3_test,y1_train,y1_test = train_test_split(X3,y1,stratify = y1,random_state=1,test_size=.2)
 
 rf.fit(X1_train,y1_train) 
-print(rf.score(X1_test,y1_test).round(4)) #66.63%
+print(rf.score(X1_test,y1_test).round(4)) #70.2%
 
 rf2.fit(X2_train,y2_train)
-print(rf2.score(X2_test,y2_test).round(4)) #71.43%
+print(rf2.score(X2_test,y2_test).round(4)*100) #68.47%
 
 rf.fit(X3_train,y1_train)
-print(rf.score(X3_test,y1_test).round(4)) #69.59%
+print(rf.score(X3_test,y1_test).round(4)*100) #70.61%  Best
+
+from sklearn.metrics import plot_confusion_matrix
+
+plot_confusion_matrix(rf,X3,y1,cmap=plt.cm.magma)
+plt.title('Random Forest Model')
+plt.savefig('Random Forest CM.png',dpi=600,bbox_inches='tight')
+
+from sklearn.metrics import classification_report
+#classification_report(y2_test, y_pred)
+
+# Stratifying is important
 
 
-# Logistic Regression
-from sklearn.linear_model import LogisticRegression
-lr = LogisticRegression(solver='liblinear')
+## TUNING ##
 
-lr.fit(X1_train,y1_train) 
-print(lr.score(X1_test,y1_test).round(4)) # 50.41%
 
-lr.fit(X2_train,y2_train)
-print(lr.score(X2_test,y2_test).round(4)) # 55.96%
+from sklearn.model_selection import RandomizedSearchCV# Number of trees in random forest
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+# Number of features to consider at every split
+max_features = ['auto', 'sqrt']
+# Maximum number of levels in tree
+max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
+max_depth.append(None)
+# Minimum number of samples required to split a node
+min_samples_split = [2, 5, 10]
+# Minimum number of samples required at each leaf node
+min_samples_leaf = [1, 2, 4]
+# Method of selecting samples for training each tree
+bootstrap = [True, False]# Create the random grid
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
 
-lr.fit(X3_train,y1_train)
-print(lr.score(X3_test,y1_test).round(4)) # 51.43%
+rf3 = RandomForestClassifier()
+rf_rscv = RandomizedSearchCV(estimator=rf3, param_distributions=random_grid,
+                             n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+rf_rscv.fit(X3_train,y1_train)
+rf_rscv.best_params_
 
-# Gradient boost
-from sklearn.ensemble import GradientBoostingClassifier
-gbr = GradientBoostingClassifier(random_state = 1)
-  
-gbr.fit(X1_train,y1_train) 
-print(gbr.score(X1_test,y1_test).round(4)) # 56.33%
+rf_rand = RandomForestClassifier(n_estimators= 1000,min_samples_split= 2,
+                                 min_samples_leaf= 1,max_features= 'sqrt',
+                                 max_depth=20,bootstrap= True)
 
-gbr.fit(X2_train,y2_train)
-print(gbr.score(X2_test,y2_test).round(4)) # 60.45%
+rf_rand.fit(X3_train,y1_train)
+rf_rand.score(X3_test,y1_test) #70.82%
+y_pred = rf_rand.predict(X3_test)
 
-gbr.fit(X3_train,y1_train)
-print(gbr.score(X3_test,y1_test).round(4)) # 57.353%
 
-## SCALING AND STANDARDIZATION ##
-from numpy import mean
-from numpy import std
-from pandas import read_csv
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import RepeatedStratifiedKFold
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.pipeline import Pipeline
-from matplotlib import pyplot
-trans = MinMaxScaler()
-model = RandomForestClassifier()
+base_model = RandomForestClassifier(n_estimators = 10, random_state = 42)
+base_model.fit(X3_train,y1_train)
+base_model.score(X3_test,y1_test) #67.86%
 
-X = X1.astype('float32')
-y1_scaled = LabelEncoder().fit_transform(y1.astype('str'))
+plot_confusion_matrix(rf_rand,X3,y1)
+plot_confusion_matrix(base_model,X3,y1)
 
-pipeline = Pipeline(steps=[('t', trans), ('m', model)])
+from sklearn.model_selection import GridSearchCV
 
-# evaluate the pipeline
-cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-n_scores = cross_val_score(pipeline, X, y1_scaled, scoring='accuracy', cv=cv, n_jobs=-1, error_score='raise')
-# report pipeline performance
-print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores))) #Accuracy: 0.692 (0.023)
+param_grid = {'n_estimators':[500,1000,1500],
+              'min_samples_split':[2,4,6],
+              'min_samples_leaf':[1,2,3],
+              'max_features':[2,3],
+              'max_depth':[30,40,50,60],
+              'bootstrap':[True]}
+rf4 = RandomForestClassifier()
 
-## MODELS ## 
+rf_gscv = GridSearchCV(estimator = rf, param_grid = param_grid, 
+                          cv = 3, n_jobs = -1, verbose = 2)
+rf_gscv.fit(X3_train,y1_train)
+rf_gscv.best_params_
+
+rf_fin = RandomForestClassifier(n_estimators= 1000,min_samples_split= 2,
+                                 min_samples_leaf= 1,max_features=3,
+                                 max_depth=30,bootstrap= True)
+
+rf_fin.fit(X3_train,y1_train)
+rf_fin.score(X3_test,y1_test) #71.33%
+
 
 
 

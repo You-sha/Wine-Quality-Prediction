@@ -12,15 +12,15 @@ import matplotlib.pyplot as plt
 
 
 df = pd.read_csv('winequality-white.csv')
-df.columns
-
 df[['fixed_acidity',"volatil_acidity","citric_acid","residual_sugar",
    "chlorides","free_sulfur_dioxide","total_sulfur_dioxide","density",
    "pH","sulphates","alcohol","quality"]] = df['fixed acidity;"volatile acidity";"citric acid";"residual sugar";"chlorides";"free sulfur dioxide";"total sulfur dioxide";"density";"pH";"sulphates";"alcohol";"quality"'].apply(\
                                                lambda x: pd.Series(str(x).split(";")))
 
 df.drop('fixed acidity;"volatile acidity";"citric acid";"residual sugar";"chlorides";"free sulfur dioxide";"total sulfur dioxide";"density";"pH";"sulphates";"alcohol";"quality"', axis=1, inplace=True)
-
+sns.heatmap()
+df.dtypes
+df.corr()
 df = df.astype('float')
 
 ## DATA EXPLORATION ##
@@ -130,11 +130,11 @@ plt.ylabel('Density')
 
 plt.subplot(2,2,3)
 plt.boxplot(df['chlorides'])
-plt.ylabel('Residual Sugar')
+plt.ylabel('Chlorides')
 
 plt.subplot(2,2,4)
 plt.boxplot(df['volatil_acidity'])
-plt.ylabel('Total Sulfur Dioxide')
+plt.ylabel('Volatile Acidity')
 
 plt.savefig('Correlations with quality (boxplot)',bbox_inches = 'tight',dpi=700)
 plt.show()

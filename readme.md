@@ -165,7 +165,7 @@ Training and scoring:
 
 Interestingly, the model fitted with the unaltered data with all of the features performs the best (70.61%), while the one with removed outliers and selected highly correlated features performs the worst. So, my hypothesis was completely wrong.
 
-## <p align="center">Model Tuning</p>
+### <p align="center">Model Tuning</p>
 
 Now we are going to take the best model and increase its performance by tuning the hyperparameters. I'll first use RandomizedSearchCV, and then GridSearchCV on the resulting RSCV model, and tune it further.
 

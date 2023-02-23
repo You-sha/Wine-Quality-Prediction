@@ -1,6 +1,14 @@
 # <p align="center">Predicting Wine Quality</p>
 <p align = "center">Using ML models to predict quality of wines, based on the given features in the dataset.</p>
 
+## Table of contents:
+
+* [Exploration](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#exploration)
+* [Cleaning](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#cleaning)
+* [Model Building](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#model-building)
+* [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#model-tuning)
+* [Conclusion](https://github.com/You-sha/Wine-Quality-Prediction/edit/main/readme.md#conclusion)
+
 
 ___
 

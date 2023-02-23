@@ -178,4 +178,10 @@ Next, I am going to run a grid search for the values around the best RSCV parame
 
 **Result:** The final model has a score of 71.33%. An overall increase of 0.72% in performance from the original model.
 
-*(In progress)*
+## <p align="center">Conclusion</p>
+
+While I would like to try and find more ways to improve the performance of this model, I have spent entirely too much time and effort on this project. And have now realized that I am extremely dispassionate about wines. I wanted to stop midway, but I couldn't bring myself to just abandon something I started.
+
+I was certainly forced to learn a lot of things because of this project, as this is one of my very first ones. And even though this is not one of my favorite projects, I will remember it gratefully for this.
+
+Thank you for reading, and have a good day.

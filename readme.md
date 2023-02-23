@@ -1,7 +1,6 @@
 # <p align="center">Predicting Wine Quality</p>
 <p align = "center">Using basic ML models to predict quality of wines, based on the given features in the dataset.</p>
 
-<p align = "center">(In progress)</p>
 
 ___
 
@@ -42,7 +41,7 @@ Opening the dataframe using the Variable Explorer in Spyder:
 <img src="https://user-images.githubusercontent.com/123200960/219403282-85543b7a-e141-41b8-ae06-c784c575492a.png" width="600" height="500">
 
 
-All of the features are dumped into a sing  le column, seperated by semicolons. First I seperate it into different columns by applying a lambda function, then I drop this initial column.
+All of the features are dumped into a single column, seperated by semicolons. First I seperate it into different columns by applying a lambda function, then I drop this initial column.
 
 <img src="https://user-images.githubusercontent.com/123200960/219408628-c3240412-dc77-4842-8453-8f27ae1f2906.png" width="600" height="500">
 
@@ -58,7 +57,7 @@ Looking at the correlation between just the target variable and features:
 
 <img src="https://user-images.githubusercontent.com/123200960/219882758-0c0256dc-0e4f-4b59-a6d7-4a0fa9e997d6.png" width="260" height="600">
 
-We can see that **alcohol** content and **density** have the biggest impact on the quality of a wine. The higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
+We can see that **alcohol** content and **density** have the biggest impact on the quality of a wine. So in general, the higher the alcohol content, the better the quality, and the lower the density the better the quality. Sulphates seem to have the least impact on quality.
 
 Let's look at the top four features that impact quality (```alcohol```, ```density```, ```chlorides```, and ```volatil_acidity```):
 
@@ -116,11 +115,11 @@ I'm going to make models with four different variations of this dataset:
 
 * ***Highly correlated features without outliers*** - I expect models built on this one to perform the best.
 
-Since I am not exactly the most knowledgable about wine, it is difficult to say at what point outliers can be safely discarded. So I will be trying my best to only remove extreme cases. Still, it should be kept in mind that this model is not going to be the best to use in real-world scenarios.
+Since I am not exactly the most knowledgable about wines, it is difficult to say at what point outliers can be safely discarded. So I will be trying my best to only remove extreme cases. Still, it should be kept in mind that this model is not going to be the best to use in real-world scenarios.
 
 ### Removing Outliers
 
-For most of the highly correlated features, I have discarded values over the 99.5 percentile, and under the 0.05 percentile.
+For most of the highly correlated features, I have discarded values over the .995 percentile, and under the .005 percentile.
 
 The four highest correlated features in the new dataset:
 
@@ -142,7 +141,7 @@ The data is now slightly more normalized. Since I will be using Random Forest to
 
 ## <p align="center">Model Building</p>
 
-First I import the necessary modules, load the original data and the one without outliers, and then I set the features that will be used:
+First I import the necessary modules, load the original dataset and the one without outliers, and then I select the features that will be used:
 
 <img src="https://user-images.githubusercontent.com/123200960/220891949-2b415146-9e04-41e7-8da6-1c27dc310b23.png" width="700" height="228">
 
@@ -160,9 +159,9 @@ Interestingly, the model fitted with the unaltered data with all of the features
 
 ## <p align="center">Model Tuning</p>
 
-Now we are going to take the best model and increase its performance by tuning the hyperparameters. I'll first use RandomizedSearchCV, and then a GridSearchCV on the resulting RSCV model, to tune it further.
+Now we are going to take the best model and increase its performance by tuning the hyperparameters. I'll first use RandomizedSearchCV, and then GridSearchCV on the resulting RSCV model, and tune it further.
 
-First I am going to import randomized search, then set a range for the hyperparameters I want to test. Then I fit a new random forest into the RSCV and get the best params.
+First I am going to import randomized search, then set a range for the hyperparameters I want to test. And I fit a new random forest into the RSCV and get the best params.
 
 Then, I instantiate a new model using the best RSCV parameters, fit the training data into it and score the test data:
 

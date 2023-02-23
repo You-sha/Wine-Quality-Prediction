@@ -1,5 +1,5 @@
 # <p align="center">Predicting Wine Quality</p>
-<p align = "center">Using basic ML models to predict quality of wines, based on the given features in the dataset.</p>
+<p align = "center">Using ML models to predict quality of wines, based on the given features in the dataset.</p>
 
 
 ___

@@ -1,6 +1,8 @@
 # <p align="center">Predicting Wine Quality</p>
-<p align = "center">Using ML models to predict quality of wines, based on the given features in the dataset.</p>
-
+<p align = "center">Using Machine Learning to predict quality of wines, based on the given features in the dataset.</p>
+<p align = "center">Tools used: Python (Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn)</p>
+<p align = "center">Model: Random Forest</p>
+  
 ## Table of contents:
 
 * [Exploration](https://github.com/You-sha/Wine-Quality-Prediction#exploration)

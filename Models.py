@@ -9,7 +9,6 @@ Created on Sat Feb 18 01:29:48 2023
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from warnings import simplefilter
 simplefilter(action='ignore', category=FutureWarning)
 
@@ -70,23 +69,18 @@ from sklearn.metrics import classification_report
 
 # Stratifying is important
 
-
 ## TUNING ##
 
+from sklearn.model_selection import RandomizedSearchCV
 
-from sklearn.model_selection import RandomizedSearchCV# Number of trees in random forest
 n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
-# Number of features to consider at every split
 max_features = ['auto', 'sqrt']
-# Maximum number of levels in tree
 max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
 max_depth.append(None)
-# Minimum number of samples required to split a node
 min_samples_split = [2, 5, 10]
-# Minimum number of samples required at each leaf node
 min_samples_leaf = [1, 2, 4]
-# Method of selecting samples for training each tree
-bootstrap = [True, False]# Create the random grid
+bootstrap = [True, False]
+
 random_grid = {'n_estimators': n_estimators,
                'max_features': max_features,
                'max_depth': max_depth,
@@ -96,25 +90,20 @@ random_grid = {'n_estimators': n_estimators,
 
 rf3 = RandomForestClassifier()
 rf_rscv = RandomizedSearchCV(estimator=rf3, param_distributions=random_grid,
-                             n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+                             n_iter = 100, cv = 3, verbose=2, random_state=42, 
+                             n_jobs = -1)
 rf_rscv.fit(X3_train,y1_train)
 rf_rscv.best_params_
 
 rf_rand = RandomForestClassifier(n_estimators= 1000,min_samples_split= 2,
                                  min_samples_leaf= 1,max_features= 'sqrt',
-                                 max_depth=20,bootstrap= True)
+                                 max_depth=20,bootstrap= True) # Best params rscv
 
 rf_rand.fit(X3_train,y1_train)
-rf_rand.score(X3_test,y1_test) #70.82%
+rf_rand.score(X3_test,y1_test) #70.82% 
 y_pred = rf_rand.predict(X3_test)
 
-
-base_model = RandomForestClassifier(n_estimators = 10, random_state = 42)
-base_model.fit(X3_train,y1_train)
-base_model.score(X3_test,y1_test) #67.86%
-
-plot_confusion_matrix(rf_rand,X3,y1)
-plot_confusion_matrix(base_model,X3,y1)
+## Grid Search
 
 from sklearn.model_selection import GridSearchCV
 
@@ -133,10 +122,11 @@ rf_gscv.best_params_
 
 rf_fin = RandomForestClassifier(n_estimators= 1000,min_samples_split= 2,
                                  min_samples_leaf= 1,max_features=3,
-                                 max_depth=30,bootstrap= True)
+                                 max_depth=30,bootstrap= True) # Best params GridSearch
 
 rf_fin.fit(X3_train,y1_train)
-rf_fin.score(X3_test,y1_test) #71.33%
+rf_fin.score(X3_test,y1_test) #71.33% # Best
+
 
 
 

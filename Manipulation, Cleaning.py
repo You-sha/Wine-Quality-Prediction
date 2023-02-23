@@ -122,46 +122,6 @@ plt.xlabel('Volatile Acidity')
 plt.savefig('Distributions (outliers).png',bbox_inches = 'tight',dpi=700)
 plt.show()
 
-
-plt.subplot(2,2,1)
-n, bins, patches = plt.hist(df_outliers['alcohol'])
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-col = bin_centers - min(bin_centers)
-col /= max(col)
-for c, p in zip(col, patches):
-    plt.setp(p, 'facecolor', my_cmap(c))
-plt.xlabel('Alcohol')
-
-plt.subplots_adjust(wspace=0.2,hspace=0.36)
-plt.suptitle('Feature Distribution (Removed Outliers)',fontsize=20)
-
-plt.subplot(2,2,2)
-n, bins, patches = plt.hist(df_outliers['density'])
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-col = bin_centers - min(bin_centers)
-col /= max(col)
-for c, p in zip(col, patches):
-    plt.setp(p, 'facecolor', my_cmap(c))
-plt.xlabel('Density')
-
-plt.subplot(2,2,3)
-n, bins, patches = plt.hist(df_outliers['chlorides'])
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-col = bin_centers - min(bin_centers)
-col /= max(col)
-for c, p in zip(col, patches):
-    plt.setp(p, 'facecolor', my_cmap(c))
-plt.xlabel('Chlorides')
-
-plt.subplot(2,2,4)
-n, bins, patches = plt.hist(df_outliers['volatil_acidity'])
-bin_centers = 0.5 * (bins[:-1] + bins[1:])
-col = bin_centers - min(bin_centers)
-col /= max(col)
-for c, p in zip(col, patches):
-    plt.setp(p, 'facecolor', my_cmap(c))
-plt.xlabel('Volatile Acidity')
-
 # Boxplots
 plt.subplot(2,2,1)
 plt.boxplot(df_outliers['alcohol'])
@@ -172,6 +132,8 @@ plt.subplots_adjust(wspace=0.2,hspace=0.36)
 plt.subplot(2,2,2)
 plt.boxplot(df_outliers['density'])
 plt.ylabel('Density')
+
+plt.suptitle('Distributions Boxplots (Removed outliers)',fontsize=20)
 
 plt.subplot(2,2,3)
 plt.boxplot(df_outliers['chlorides'])

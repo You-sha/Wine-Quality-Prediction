@@ -177,6 +177,10 @@ Next, I am going to run a grid search for the values around the best RSCV parame
 
 **Result:** The final model has a score of 71.33%. An overall increase of 0.72% in performance from the original model.
 
+Confusion Matrix:
+
+![Random Forest CM](https://user-images.githubusercontent.com/123200960/220903858-cf4573fe-f523-49ef-9bfc-1958c6648fe1.png)
+
 ## <p align="center">Conclusion</p>
 
 While I would like to try and find more ways to improve the performance of this model, I have spent entirely too much time and effort on this project. And have now realized that I am extremely dispassionate about wines. I wanted to stop midway, but I couldn't bring myself to just abandon something I started.

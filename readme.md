@@ -42,7 +42,7 @@ Opening the dataframe using the Variable Explorer in Spyder:
 <img src="https://user-images.githubusercontent.com/123200960/219403282-85543b7a-e141-41b8-ae06-c784c575492a.png" width="600" height="500">
 
 
-All of the features are dumped into a single column, seperated by semicolons. First I seperate it into different columns by applying a lambda function, then I drop this initial column.
+All of the features are dumped into a sing  le column, seperated by semicolons. First I seperate it into different columns by applying a lambda function, then I drop this initial column.
 
 <img src="https://user-images.githubusercontent.com/123200960/219408628-c3240412-dc77-4842-8453-8f27ae1f2906.png" width="600" height="500">
 
@@ -76,7 +76,7 @@ Since alcohol and density were difficult to read as their changes are so small, 
 
 ___
 
-Let's take a look at their distributions:
+Let's take a look at their distributions: 
 
 <img src="https://user-images.githubusercontent.com/123200960/219965353-2a5fe6a5-017d-4aea-8254-d3c7abccb9ac.png" width="1000" height="500">
 
@@ -126,16 +126,56 @@ The four highest correlated features in the new dataset:
 
 **Bars:**
 
-![Bar Outliers](https://user-images.githubusercontent.com/123200960/220135569-9979cc3a-63e4-4f53-a12b-e4db5543c970.png)
+![Bar Outliers](https://user-images.githubusercontent.com/123200960/220887264-fd434f11-6c6e-49e5-8cb7-f3f41246e909.png)
 
 **Distributions:**
 
 Boxplots:
 
-![Distribution of features (Removed Outliers)](https://user-images.githubusercontent.com/123200960/220135967-b0ff4403-a165-4c91-9f66-07a976d8b5de.png)
+![Distribution of features (Removed Outliers)](https://user-images.githubusercontent.com/123200960/220887061-defb4740-81a2-45f6-a723-35189c7d2fb1.png)
 
 Histograms:
 
-![Distributions (outliers)](https://user-images.githubusercontent.com/123200960/220135891-0710d992-0635-4055-8296-2fd4481c29f2.png)
+![Distributions (outliers)](https://user-images.githubusercontent.com/123200960/220887133-1ec398c2-3342-4191-9c33-b135c3ae3b59.png)
+
+The data is now slightly more normalized. Since I will be using Random Forest to build the model, there's no need to scale the data.
+
+## <p align="center">Model Building</p>
+
+First I import the necessary modules, load the original data and the one without outliers, and then I set the features that will be used:
+
+<img src="https://user-images.githubusercontent.com/123200960/220891949-2b415146-9e04-41e7-8da6-1c27dc310b23.png" width="700" height="228">
+
+Next, I split them into different training and target sets and import Random Forest Classifier:
+
+<img src="https://user-images.githubusercontent.com/123200960/220893356-030e1c13-3fbb-4878-972a-34062d56d236.png" width="700" height="188">
+
+Training and scoring:
+
+<img src="https://user-images.githubusercontent.com/123200960/220894339-83c9bdff-5e7e-4e68-bdc9-6dcb630fbb86.png" width="700" height="224">
+
+### Observation
+
+Interestingly, the model fitted with the unaltered data with all of the features performs the best (70.61%), while the one with removed outliers and selected highly correlated features performs the worst. So, my hypothesis was completely wrong.
+
+## <p align="center">Model Tuning</p>
+
+Now we are going to take the best model and increase its performance by tuning the hyperparameters. I'll first use RandomizedSearchCV, and then a GridSearchCV on the resulting RSCV model, to tune it further.
+
+First I am going to import randomized search, then set a range for the hyperparameters I want to test. Then I fit a new random forest into the RSCV and get the best params.
+
+Then, I instantiate a new model using the best RSCV parameters, fit the training data into it and score the test data:
+
+<img src="https://user-images.githubusercontent.com/123200960/220896489-06ecb5c3-5de2-415b-8890-aaeb30c4c492.png" width="700" height="500">
+
+**Result:** The resulting model has a 70.82% score. A 0.21% increase in model performance.
+
+---
+
+Next, I am going to run a grid search for the values around the best RSCV parameters:
+
+<img src="https://user-images.githubusercontent.com/123200960/220899306-d6310fbb-9d1c-47db-b51e-63ea416f8e59.png" width="700" height="350">
+
+**Result:** The final model has a score of 71.33%. An overall increase of 0.72% in performance from the original model.
 
 *(In progress)*

@@ -71,7 +71,7 @@ We can see that **alcohol** content and **density** have the biggest impact on t
 
 Let's look at the top four features that impact quality (```alcohol```, ```density```, ```chlorides```, and ```volatil_acidity```):
 
-<img src="https://user-images.githubusercontent.com/123200960/219965143-63abde58-8d42-49af-8054-2d5e95ef7812.png" width="1000" height="480">
+![Correlations with quality (bar)](https://user-images.githubusercontent.com/123200960/221917790-192cb048-0536-4d43-9dba-376adda677ac.png)
 
 Since alcohol and density were difficult to read as their changes are so small, I closed up on them by setting a smaller y limit.
 
@@ -87,7 +87,7 @@ ___
 
 Let's take a look at their distributions: 
 
-<img src="https://user-images.githubusercontent.com/123200960/219965353-2a5fe6a5-017d-4aea-8254-d3c7abccb9ac.png" width="1000" height="500">
+![Distributions](https://user-images.githubusercontent.com/123200960/221917934-f160bb9b-6c0a-4b4b-9c00-c6fdaa7c013d.png)
 
 ```alcohol``` - Fairly normal distribution. Skewed to the right.
 
@@ -107,7 +107,7 @@ Since ```alcohol``` is the most correlated feature, it might make sense to have 
 
 Let's also have a look at the relations between it's top 4 highest correlated variables, ```density```, ```residual_sugar```, ```total_sulfur_dioxide``` and ```chlorides``` (I shall not include ```quality``` as it is not continuous).
 
-<img src="https://user-images.githubusercontent.com/123200960/219885039-6c2799c8-69ec-435f-9552-c805348f7103.png" width="1000" height="500">
+![Correlations with alcohol](https://user-images.githubusercontent.com/123200960/221918172-918e9d0d-aca8-417a-a397-3e420772ed78.png)
 
 Wow. This makes me want to try building a model to predict the alcohol amount of a wine as well. I wonder though if the high correlation between density and alcohol could have a negative impact on the quality prediction.
 

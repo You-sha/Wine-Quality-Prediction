@@ -30,7 +30,7 @@ ___
 
 **```volatil_acidity```** - Volatile acidity of the wine (I think it is misspelled).
 
-**```citric_acid```** - Amount of cirtic acid in the wine.
+**```citric_acid```** - Amount of citric acid in the wine.
 
 **```residual_sugar```** - Amount of residual sugar in the wine.
 

@@ -1,15 +1,23 @@
 # <p align="center">Predicting Wine Quality</p>
 <p align = "center">Using Machine Learning to predict quality of wines, based on the given features in the dataset.</p>
 <p align = "center">Tools used: Python (Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn)</p>
-<p align = "center">Summary: Performing exploratory data analysis, cleaning the data, trying different classification algorithms, and tuning the one with the best performance.</p>
   
 ## Table of contents:
 
-* [Exploration](https://github.com/You-sha/Wine-Quality-Prediction#exploration)
-* [Cleaning](https://github.com/You-sha/Wine-Quality-Prediction#cleaning)
-* [Model Building](https://github.com/You-sha/Wine-Quality-Prediction#model-building)
-  - [Model Tuning](https://github.com/You-sha/Wine-Quality-Prediction#model-tuning)
-* [Conclusion](https://github.com/You-sha/Wine-Quality-Prediction#conclusion)
+* [TL;DR](#tldr)
+* [Exploration](#exploration)
+* [Cleaning](#cleaning)
+* [Model Building](#model-building)
+  - [Model Tuning](#model-tuning)
+* [Conclusion](#conclusion)
+
+## TL;DR
+
+We will explore the data, its distributions and correlations, deal with outliers, select features, form hypotheses and test them, try different classification algorithms, and finally tune the model with the best performance.
+
+Result: A Random Forest Classifier model with **71.33% accuracy** in predicting the quality of a wine. After some adjustments with the help of wine professionals, **this model may be able to help wine companies or individuals to accurately judge the quality of their wines.**
+
+<img src="https://user-images.githubusercontent.com/123200960/220903858-cf4573fe-f523-49ef-9bfc-1958c6648fe1.png" width="650" height="500">
 
 
 ___
@@ -193,7 +201,7 @@ Confusion Matrix:
 
 ## <p align="center">Conclusion</p>
 
-**We have a Random Forest Regressor model with 71.33% accuracy in predicting the quality of a wine.**
+**We have a Random Forest Classifier model with 71.33% accuracy in predicting the quality of a wine.**
 
 ---
 

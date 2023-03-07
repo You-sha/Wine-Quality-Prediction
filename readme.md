@@ -1,8 +1,10 @@
 # <p align="center">Predicting Wine Quality</p>
 <p align = "center">Using Machine Learning to predict quality of wines, based on the given features in the dataset.</p>
 <p align = "center">Tools used: Python (Numpy, Pandas, Matplotlib, Seaborn, Scikit-learn)</p>
+
+#
   
-## Table of contents:
+**Table of contents:**
 
 * [TL;DR](#tldr)
 * [Exploration](#exploration)
@@ -11,7 +13,7 @@
   - [Model Tuning](#model-tuning)
 * [Conclusion](#conclusion)
 
-## TL;DR
+**Summary:**
 
 We will explore the data, its distributions and correlations, deal with outliers, select features, form hypotheses and test them, try different classification algorithms, and finally tune the model with the best performance.
 
